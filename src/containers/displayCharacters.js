@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Characters } from '../components/characters/Characters';
-import { getCharacters } from '../selectors/characterSelectors';
+import { getCharacters, getCharactersLoading } from '../selectors/characterSelectors';
 import { loadCharacters } from '../actions/characterActions';
 
-function DisplayCharacters({ characters, fetchCharacters }) {
+function DisplayCharacters({ characters, fetchCharacters, loading }) {
 
   useEffect(() => {
     fetchCharacters();
   }, []);
+
+  if(loading) return <h1>Loading...</h1>;
+
 
   return (
     <Characters characters={characters} />
@@ -18,7 +21,8 @@ function DisplayCharacters({ characters, fetchCharacters }) {
 }
 
 const mapStateToProps = state => ({
-  characters: getCharacters(state)
+  characters: getCharacters(state),
+  charactersLoading: getCharactersLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -35,7 +39,8 @@ DisplayCharacters.propTypes = {
     photoUrl: PropTypes.string,
     _id: PropTypes.string.isRequired
   })).isRequired,
-  fetchCharacters: PropTypes.func.isRequired
+  fetchCharacters: PropTypes.func.isRequired,
+  loading: PropTypes.string
 };
 
 export default connect(

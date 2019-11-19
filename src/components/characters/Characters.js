@@ -6,14 +6,14 @@ export const Characters = ({ characters }) => {
 
   const charElements = characters.map(char => {
     return (
-      <li key={char._id}>
+      <li key={char._id} style={{ maxWidth: '350px' }}>
         <Character name={char.name} affiliation={char.affiliation} photoUrl={char.photoUrl} />
       </li>
     );
   });
 
   return (
-    <ul>
+    <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
       {charElements}
     </ul>
   );
