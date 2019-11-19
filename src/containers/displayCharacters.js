@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Characters } from '../components/characters/Characters';
 import { getCharacters, getCharactersLoading } from '../selectors/characterSelectors';
-import { loadCharacters } from '../actions/characterActions';
+import { loadCharactersPromise } from '../actions/characterActions';
 
 function DisplayCharacters({ characters, fetchCharacters, loading }) {
 
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchCharacters() {
-    dispatch(loadCharacters());
+    dispatch(loadCharactersPromise());
   }
 });
 
