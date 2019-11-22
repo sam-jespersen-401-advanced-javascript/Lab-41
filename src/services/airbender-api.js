@@ -1,7 +1,7 @@
 export const fetchCharacters = () => {
   return fetch('https://last-airbender-api.herokuapp.com/api/v1/characters/')
     .then(res => res.json()).
-    then((arr) => {
+    then(arr => {
       return arr.map(char => {
         return {
           name: char.name,
@@ -11,4 +11,10 @@ export const fetchCharacters = () => {
         };
       });
     });
+};
+
+export const getCharById = id => {
+  return fetch(`https://last-airbender-api.herokuapp.com/api/v1/characters/${id}`)
+    .then(res => res.json())
+    .then(char => char);
 };

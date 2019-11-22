@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export const Character = ({ name, affiliation, photoUrl }) => {
+export const Character = ({ _id, name, photoUrl }) => {
 
   return (
-    <figure>
-      <figcaption>{name}</figcaption>
-      <img src={photoUrl} alt={name} />
-      <figcaption>{affiliation}</figcaption>
-    </figure>
+    <Link to={`/character/${_id}`}>
+      <figure>
+        <img src={photoUrl} alt={name} />
+        <figcaption>{name}</figcaption>
+      </figure>
+    </Link>
   );
 
 };
@@ -17,7 +19,7 @@ export const Character = ({ name, affiliation, photoUrl }) => {
 
 Character.propTypes = {
   name: PropTypes.string.isRequired,
-  affiliation: PropTypes.string,
-  photoUrl: PropTypes.string
+  photoUrl: PropTypes.string,
+  _id: PropTypes.string.isRequired
 };
 

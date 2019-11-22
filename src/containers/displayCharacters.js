@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Characters } from '../components/characters/Characters';
-import { getCharacters, getCharactersLoading } from '../selectors/characterSelectors';
+import { getCharacters, getLoading } from '../selectors/characterSelectors';
 import { loadCharactersPromise } from '../actions/characterActions';
 
 function DisplayCharacters({ characters, fetchCharacters, loading }) {
@@ -22,7 +22,7 @@ function DisplayCharacters({ characters, fetchCharacters, loading }) {
 
 const mapStateToProps = state => ({
   characters: getCharacters(state),
-  charactersLoading: getCharactersLoading(state)
+  loading: getLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

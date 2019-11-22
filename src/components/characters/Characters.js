@@ -7,7 +7,7 @@ export const Characters = ({ characters }) => {
   const charElements = characters.map(char => {
     return (
       <li key={char._id} style={{ maxWidth: '350px' }}>
-        <Character name={char.name} affiliation={char.affiliation} photoUrl={char.photoUrl} />
+        <Character name={char.name} _id={char._id} photoUrl={char.photoUrl} />
       </li>
     );
   });
@@ -24,7 +24,6 @@ export const Characters = ({ characters }) => {
 Characters.propTypes = {
   characters: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    affiliation: PropTypes.string,
     photoUrl: PropTypes.string,
     _id: PropTypes.string.isRequired
   })).isRequired
