@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import characters from './characterReducer';
+import quotes from './simpsonsReducer';
 
 export default combineReducers({
-  characters
+  quotes
 });
